@@ -37,7 +37,6 @@ namespace VimeoDotNet.Enums
         /// <summary>
         /// Disable - The video is embeddable, but it's hidden on Vimeo and can't be played. This privacy setting appears as Hide from Vimeo on the Vimeo front end.
         /// </summary>
-        [Obsolete]
         Disable,
 
         /// <summary>
