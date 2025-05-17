@@ -72,36 +72,48 @@ namespace VimeoDotNet
         public async Task<IUploadRequest> UploadEntireFileAsync(IBinaryContent fileContent,
             long chunkSize = DefaultUploadChunkSize,
             long? replaceVideoId = null,
-            Action<double> statusCallback = null)
+            Action<double, string, int?> statusCallback = null)
         {
-            var uploadRequest = await StartUploadFileAsync(fileContent, chunkSize, replaceVideoId).ConfigureAwait(false);
-
-            while (!uploadRequest.IsVerifiedComplete)
+            try
             {
-                var uploadStatus = await ContinueUploadFileAsync(uploadRequest).ConfigureAwait(false);
+                var uploadRequest = await StartUploadFileAsync(fileContent, chunkSize, replaceVideoId).ConfigureAwait(false);
 
-                statusCallback?.Invoke(Math.Round(((double)uploadStatus.BytesWritten / uploadRequest.FileLength) * 100));
-
-                if (uploadStatus.Status == UploadStatusEnum.InProgress)
-                    continue;
-                // We presumably wrote all the bytes in the file, so verify with Vimeo that it
-                // is completed
-                uploadStatus = await VerifyUploadFileAsync(uploadRequest).ConfigureAwait(false);
-                if (uploadStatus.Status == UploadStatusEnum.Completed)
+                while (!uploadRequest.IsVerifiedComplete)
                 {
+                    var uploadStatus = await ContinueUploadFileAsync(uploadRequest).ConfigureAwait(false);
+                    
+                    //we have uploadStatus.BytesWritten == 0 in the firstcheck, this goes into an infinite loop
+
+                    var perc = Math.Round(((double)uploadStatus.BytesWritten / uploadRequest.FileLength) * 100);
+                    statusCallback?.Invoke(perc, $"ContinueUploadFileAsync({uploadStatus.BytesWritten},{uploadRequest.FileLength})", (int)uploadStatus.Status);
+
+                    if (uploadStatus.Status == UploadStatusEnum.InProgress)
+                        continue;
+
                     uploadRequest.IsVerifiedComplete = true;
-                }
-                else if (uploadStatus.BytesWritten == uploadRequest.FileLength)
-                {
-                    // Supposedly all bytes are written, but Vimeo doesn't think so, so just
-                    // bail out
-                    throw new VimeoUploadException(
-                        $"Vimeo failed to mark file as completed, Bytes Written: {uploadStatus.BytesWritten:N0}, Expected: {uploadRequest.FileLength:N0}.",
-                        uploadRequest);
-                }
-            }
 
-            return uploadRequest;
+                    // We presumably wrote all the bytes in the file, so verify with Vimeo that it
+                    // is completed
+                    //uploadStatus = await VerifyUploadFileAsync(uploadRequest).ConfigureAwait(false);
+                    //statusCallback?.Invoke(perc, $"VerifyUploadFileAsync({uploadStatus.BytesWritten},{uploadRequest.FileLength}) : {(uploadStatus.Status == UploadStatusEnum.Completed)} {(uploadStatus.BytesWritten == uploadRequest.FileLength)}", (int)uploadStatus.Status);
+                    //if (uploadStatus.Status == UploadStatusEnum.Completed)
+                    //{
+                    //    uploadRequest.IsVerifiedComplete = true;
+                    //}
+                    //else if (uploadStatus.BytesWritten == uploadRequest.FileLength)
+                    //{
+                    //    // Supposedly all bytes are written, but Vimeo doesn't think so, so just
+                    //    // bail out
+                    //    throw new VimeoUploadException($"Vimeo failed to mark file as completed, Bytes Written: {uploadStatus.BytesWritten:N0}, Expected: {uploadRequest.FileLength:N0}.", uploadRequest);
+                    //}
+                }
+
+                return uploadRequest;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
 
         /// <inheritdoc />
