@@ -82,7 +82,7 @@ namespace VimeoDotNet
                 {
                     var uploadStatus = await ContinueUploadFileAsync(uploadRequest).ConfigureAwait(false);
                     
-                    //we have uploadStatus.BytesWritten == 0 in the firstcheck, this goes into an infinite loop
+                    
 
                     var perc = Math.Round(((double)uploadStatus.BytesWritten / uploadRequest.FileLength) * 100);
                     statusCallback?.Invoke(perc, $"ContinueUploadFileAsync({uploadStatus.BytesWritten},{uploadRequest.FileLength})", (int)uploadStatus.Status);
@@ -94,6 +94,7 @@ namespace VimeoDotNet
 
                     // We presumably wrote all the bytes in the file, so verify with Vimeo that it
                     // is completed
+                    //we have uploadStatus.BytesWritten == 0 in the firstcheck, this goes into an infinite loop
                     //uploadStatus = await VerifyUploadFileAsync(uploadRequest).ConfigureAwait(false);
                     //statusCallback?.Invoke(perc, $"VerifyUploadFileAsync({uploadStatus.BytesWritten},{uploadRequest.FileLength}) : {(uploadStatus.Status == UploadStatusEnum.Completed)} {(uploadStatus.BytesWritten == uploadRequest.FileLength)}", (int)uploadStatus.Status);
                     //if (uploadStatus.Status == UploadStatusEnum.Completed)
