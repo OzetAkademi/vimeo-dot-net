@@ -543,6 +543,13 @@ namespace VimeoDotNet.Models
         [JsonProperty(PropertyName = "password")]
         public string Password { get; set; }
 
+        /// <summary>
+        /// Gets or sets the play.
+        /// </summary>
+        /// <value>The play.</value>
+        [PublicAPI]
+        [JsonProperty(PropertyName = "play")]
+        public Play Play { get; set; }
         //edit_session, files_size,
     }
 }
