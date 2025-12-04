@@ -19,26 +19,4 @@ namespace VimeoDotNet.Parameters
         /// <returns>Returns all parameters as name/value pairs.</returns>
         IDictionary<string, string> GetParameterValues();
     }
-
-    /// <summary>
-    /// Class ParameterDictionary.
-    /// Implements the <see cref="System.Collections.Generic.Dictionary{System.String, System.String}" />
-    /// Implements the <see cref="VimeoDotNet.Parameters.IParameterProvider" />
-    /// </summary>
-    /// <seealso cref="System.Collections.Generic.Dictionary{System.String, System.String}" />
-    /// <seealso cref="VimeoDotNet.Parameters.IParameterProvider" />
-    public class ParameterDictionary : Dictionary<string, string>, IParameterProvider
-    {
-        /// <inheritdoc />
-        public string ValidationError()
-        {
-            return null;
-        }
-
-        /// <inheritdoc />
-        public IDictionary<string, string> GetParameterValues()
-        {
-            return this;
-        }
-    }
 }

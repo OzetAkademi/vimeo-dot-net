@@ -1,4 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net10.0</TargetFrameworks>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
@@ -12,7 +13,7 @@
     <Title>Vimeodotnet Tuzes Version</Title>
     <Description>Vimeodotnet Tuzes Version</Description>
     <PackageReleaseNotes>Vimeodotnet Tuzes Version</PackageReleaseNotes>
-    <Version>1.0.16</Version>
+    <Version>1.0.18</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>

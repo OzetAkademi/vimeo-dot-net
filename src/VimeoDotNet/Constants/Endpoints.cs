@@ -379,6 +379,55 @@
         public const string Thumbnail = "/videos/{clipId}/pictures/{pictureId}";
 
         /// <summary>
+        /// The live events
+        /// </summary>
+        public const string LiveEvents = "/live_events";
+        /// <summary>
+        /// The live event
+        /// </summary>
+        public const string LiveEvent = "/live_events/{liveEventId}";
+        /// <summary>
+        /// The user live events
+        /// </summary>
+        public const string UserLiveEvents = "/users/{userId}/live_events";
+        /// <summary>
+        /// The user live event
+        /// </summary>
+        public const string UserLiveEvent = "/users/{userId}/live_events/{liveEventId}";
+        /// <summary>
+        /// Me live events
+        /// </summary>
+        public const string MeLiveEvents = "/me/live_events";
+        /// <summary>
+        /// Me live event
+        /// </summary>
+        public const string MeLiveEvent = "/me/live_events/{liveEventId}";
+        /// <summary>
+        /// The live event activate
+        /// </summary>
+        public const string LiveEventActivate = "/live_events/{liveEventId}/activate";
+        /// <summary>
+        /// The live event end
+        /// </summary>
+        public const string LiveEventEnd = "/live_events/{liveEventId}/end";
+        /// <summary>
+        /// The live event videos
+        /// </summary>
+        public const string LiveEventVideos = "/live_events/{liveEventId}/videos";
+        /// <summary>
+        /// The live event M3U8 playback
+        /// </summary>
+        public const string LiveEventM3U8Playback = "/live_events/{liveEventId}/m3u8_playback";
+        /// <summary>
+        /// The live event toggle RLE low latency
+        /// </summary>
+        public const string LiveEventToggleRleLowLatency = "/live_events/{liveEventId}/rle_low_latency";
+        /// <summary>
+        /// The live event privacy domains
+        /// </summary>
+        public const string LiveEventPrivacyDomains = "/live_events/{liveEventId}/privacy/domains";
+
+        /// <summary>
         /// Gets the current user endpoint.
         /// </summary>
         /// <param name="endpoint">The endpoint.</param>
