@@ -13,7 +13,7 @@
     <Title>Vimeodotnet Tuzes Version</Title>
     <Description>Vimeodotnet Tuzes Version</Description>
     <PackageReleaseNotes>Vimeodotnet Tuzes Version</PackageReleaseNotes>
-    <Version>1.0.18</Version>
+    <Version>1.0.22</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>

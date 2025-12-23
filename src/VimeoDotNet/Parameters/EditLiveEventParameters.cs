@@ -8,82 +8,6 @@ using VimeoDotNet.Enums;
 namespace VimeoDotNet.Parameters
 {
     /// <summary>
-    /// Live event privacy option
-    /// </summary>
-    public enum LiveEventPrivacyOption
-    {
-        /// <summary>
-        /// Anybody
-        /// </summary>
-        Anybody,
-
-        /// <summary>
-        /// Password
-        /// </summary>
-        Password,
-
-        /// <summary>
-        /// Only people with a Vimeo account
-        /// </summary>
-        [ParameterValue("contacts")]
-        Contacts,
-
-        /// <summary>
-        /// Only people I follow
-        /// </summary>
-        [ParameterValue("nobody")]
-        Nobody,
-
-        /// <summary>
-        /// Disable
-        /// </summary>
-        [ParameterValue("disable")]
-        Disable
-    }
-
-    /// <summary>
-    /// Live event content rating
-    /// </summary>
-    public enum LiveEventContentRating
-    {
-        /// <summary>
-        /// Safe for all audiences
-        /// </summary>
-        [ParameterValue("safe")]
-        Safe,
-
-        /// <summary>
-        /// Unrated
-        /// </summary>
-        [ParameterValue("unrated")]
-        Unrated,
-
-        /// <summary>
-        /// Nudity
-        /// </summary>
-        [ParameterValue("nudity")]
-        Nudity,
-
-        /// <summary>
-        /// Language
-        /// </summary>
-        [ParameterValue("language")]
-        Language,
-
-        /// <summary>
-        /// Violence
-        /// </summary>
-        [ParameterValue("violence")]
-        Violence,
-
-        /// <summary>
-        /// Drugs
-        /// </summary>
-        [ParameterValue("drugs")]
-        Drugs
-    }
-
-    /// <summary>
     /// Edit live event parameters
     /// </summary>
     public class EditLiveEventParameters : IParameterProvider
@@ -211,7 +135,7 @@ namespace VimeoDotNet.Parameters
         /// <inheritdoc />
         public string ValidationError()
         {
-            if (Privacy.HasValue && Privacy.Value == LiveEventPrivacyOption.Password && string.IsNullOrEmpty(Password))
+            if (Privacy is LiveEventPrivacyOption.Password && string.IsNullOrEmpty(Password))
             {
                 return "Password is required if Privacy value is set to Password.";
             }
@@ -279,7 +203,7 @@ namespace VimeoDotNet.Parameters
                 parameterValues.Add("low_latency", LowLatency.Value.ToString().ToLower());
             }
 
-            if (ContentRating != null && ContentRating.Count > 0)
+            if (ContentRating is { Count: > 0 })
             {
                 var contentRatings = new List<string>();
                 foreach (var rating in ContentRating)
@@ -294,7 +218,7 @@ namespace VimeoDotNet.Parameters
                 parameterValues.Add("chat_enabled", ChatEnabled.Value.ToString().ToLower());
             }
 
-            if (ChatEmbedAllowedDomains != null && ChatEmbedAllowedDomains.Length > 0)
+            if (ChatEmbedAllowedDomains is { Length: > 0 })
             {
                 parameterValues.Add("chat_embed_allowed_domains", string.Join(",", ChatEmbedAllowedDomains));
             }
@@ -309,7 +233,7 @@ namespace VimeoDotNet.Parameters
                 parameterValues.Add("automated_closed_captions_language", AutomatedClosedCaptionsLanguage);
             }
 
-            if (LiveEmbedAllowedDomains != null && LiveEmbedAllowedDomains.Length > 0)
+            if (LiveEmbedAllowedDomains is { Length: > 0 })
             {
                 parameterValues.Add("live_embed_allowed_domains", string.Join(",", LiveEmbedAllowedDomains));
             }
