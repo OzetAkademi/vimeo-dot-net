@@ -15,7 +15,8 @@ public class Dash
     /// <value>The link expiration time.</value>
     [PublicAPI]
     [JsonProperty(PropertyName = "link_expiration_time")]
-    public DateTime LinkExpirationTime { get; set; }
+    [CanBeNull]
+    public DateTime? LinkExpirationTime { get; set; }
 
     /// <summary>
     /// Gets or sets the link.
@@ -23,5 +24,6 @@ public class Dash
     /// <value>The link.</value>
     [PublicAPI]
     [JsonProperty(PropertyName = "link")]
+    [CanBeNull]
     public string Link { get; set; }
 }

@@ -419,6 +419,10 @@
         /// </summary>
         public const string LiveEventM3U8Playback = "/live_events/{liveEventId}/m3u8_playback";
         /// <summary>
+        /// Me live event M3U8 playback
+        /// </summary>
+        public const string MeLiveEventM3U8Playback = "/me/live_events/{liveEventId}/m3u8_playback";
+        /// <summary>
         /// The live event toggle RLE low latency
         /// </summary>
         public const string LiveEventToggleRleLowLatency = "/live_events/{liveEventId}/rle_low_latency";

@@ -31,6 +31,15 @@ namespace VimeoDotNet.Models
         [PublicAPI]
         [JsonProperty(PropertyName = "total")]
         public int Total { get; set; }
+
+        /// <summary>
+        /// Gets or sets the status.
+        /// </summary>
+        /// <value>The status.</value>
+        [PublicAPI]
+        [JsonProperty(PropertyName = "status")]
+        [CanBeNull]
+        public string Status { get; set; }
     }
 }
 

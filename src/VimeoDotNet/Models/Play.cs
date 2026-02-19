@@ -39,5 +39,6 @@ public class Play
     /// <value>The status.</value>
     [PublicAPI]
     [JsonProperty(PropertyName = "status")]
+    [CanBeNull]
     public string Status { get; set; }
 }

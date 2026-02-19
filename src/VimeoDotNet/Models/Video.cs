@@ -600,29 +600,11 @@ public class Video
     public string StreamableClip { get; set; }
 
     /// <summary>
-    /// Gets or sets the stream privacy.
+    /// Gets or sets the live information.
     /// </summary>
-    /// <value>The stream privacy.</value>
+    /// <value>The live information.</value>
     [PublicAPI]
-    [JsonProperty(PropertyName = "stream_privacy")]
+    [JsonProperty(PropertyName = "live")]
     [CanBeNull]
-    public StreamPrivacy StreamPrivacy { get; set; }
-
-    /// <summary>
-    /// Gets or sets the RTMPS link.
-    /// </summary>
-    /// <value>The RTMPS link.</value>
-    [PublicAPI]
-    [JsonProperty(PropertyName = "rtmps_link")]
-    [CanBeNull]
-    public string RtmpsLink { get; set; }
-
-    /// <summary>
-    /// Gets or sets the stream key.
-    /// </summary>
-    /// <value>The stream key.</value>
-    [PublicAPI]
-    [JsonProperty(PropertyName = "stream_key")]
-    [CanBeNull]
-    public string StreamKey { get; set; }
+    public VideoLive Live { get; set; }
 }

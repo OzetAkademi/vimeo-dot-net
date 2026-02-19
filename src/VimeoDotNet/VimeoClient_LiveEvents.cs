@@ -237,33 +237,25 @@ namespace VimeoDotNet
         /// Get live event M3U8 playback URL asynchronously.
         /// </summary>
         /// <param name="liveEventId">The live event identifier.</param>
-        /// <returns>A Task&lt;string&gt; representing the asynchronous operation, containing the M3U8 playback URL.</returns>
+        /// <returns>A Task&lt;LiveEventM3U8Playback&gt; representing the asynchronous operation, containing the M3U8 playback URL.</returns>
         /// <remarks>
         /// This method retrieves the M3U8 playlist URL for the specified live event.
         /// The M3U8 format is used for HTTP Live Streaming (HLS) playback.
         /// For more information, see: https://developer.vimeo.com/api/reference/live#get_live_event_m3u8_playback
         /// </remarks>
-        public async Task<string> GetLiveEventM3U8PlaybackAsync(long liveEventId)
+        public async Task<LiveEventM3U8Playback> GetLiveEventM3U8PlaybackAsync(long liveEventId)
         {
             var request = _apiRequestFactory.AuthorizedRequest(
                 AccessToken,
                 HttpMethod.Get,
-                Endpoints.LiveEventM3U8Playback,
+                Endpoints.MeLiveEventM3U8Playback,
                 new Dictionary<string, string>
                 {
                     {"liveEventId", liveEventId.ToString()}
                 }
             );
 
-            var response = await request.ExecuteRequestAsync().ConfigureAwait(false);
-            UpdateRateLimit(response);
-            
-            if (!IsSuccessStatusCode(response.StatusCode))
-            {
-                throw new Exceptions.VimeoApiException($"Error retrieving M3U8 playback URL for live event {liveEventId}. Status: {response.StatusCode}, Message: {response.Text}");
-            }
-
-            return response.Text;
+            return await ExecuteApiRequest<LiveEventM3U8Playback>(request).ConfigureAwait(false);
         }
 
         /// <summary>

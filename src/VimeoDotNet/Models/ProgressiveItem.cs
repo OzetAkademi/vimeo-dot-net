@@ -47,7 +47,8 @@ public class ProgressiveItem
     /// <value>The link expiration time.</value>
     [PublicAPI]
     [JsonProperty(PropertyName = "link_expiration_time")]
-    public DateTime LinkExpirationTime { get; set; }
+    [CanBeNull]
+    public DateTime? LinkExpirationTime { get; set; }
 
     /// <summary>
     /// Gets or sets the link.
@@ -55,6 +56,7 @@ public class ProgressiveItem
     /// <value>The link.</value>
     [PublicAPI]
     [JsonProperty(PropertyName = "link")]
+    [CanBeNull]
     public string Link { get; set; }
 
     /// <summary>
@@ -63,7 +65,8 @@ public class ProgressiveItem
     /// <value>The created time.</value>
     [PublicAPI]
     [JsonProperty(PropertyName = "created_time")]
-    public DateTime CreatedTime { get; set; }
+    [CanBeNull]
+    public DateTime? CreatedTime { get; set; }
 
     /// <summary>
     /// Gets or sets the FPS.
@@ -87,6 +90,7 @@ public class ProgressiveItem
     /// <value>The MD5.</value>
     [PublicAPI]
     [JsonProperty(PropertyName = "md5")]
+    [CanBeNull]
     public string Md5 { get; set; }
 
     /// <summary>
