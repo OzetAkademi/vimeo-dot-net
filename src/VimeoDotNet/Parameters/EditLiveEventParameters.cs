@@ -155,7 +155,7 @@ namespace VimeoDotNet.Parameters
 
             if (!string.IsNullOrEmpty(Description))
             {
-                parameterValues.Add("description", Description);
+                parameterValues.Add("stream_title", Description);
             }
 
             if (ScheduledStartTime.HasValue)
