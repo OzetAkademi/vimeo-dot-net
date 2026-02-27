@@ -30,16 +30,20 @@ public enum LiveEventPrivacyOption
     Unlisted,
 
     /// <summary>
-    /// Specifies that the parameter value is restricted to embedded content only.
-    /// No one on Vimeo, but the video can still be embedded on external sites.
-    /// <remarks>On frontend this is labeled as embed_only</remarks>
+    /// The event doesn't appear on Vimeo, but it can be embedded on other sites.
     /// </summary>
-    [ParameterValue("disable")]
+    [ParameterValue("embed_only")]
     Disable,
 
     /// <summary>
     /// Just the video owner.
     /// </summary>
     [ParameterValue("nobody")]
-    Nobody
+    Nobody,
+
+    /// <summary>
+    /// Anyone on this team can access the event. Appears as "Anyone at Company" on the Vimeo front end.
+    /// </summary>
+    [ParameterValue("team")]
+    Team
 }

@@ -46,7 +46,7 @@ namespace VimeoDotNet.Enums
             var field = type.GetRuntimeField(name);
             if (field == null)
                 return value.ToString().ToLower();
-            var attr = field.FieldType.GetTypeInfo().GetCustomAttribute<ParameterValueAttribute>();
+            var attr = field.GetCustomAttribute<ParameterValueAttribute>();
             return attr != null ? attr.TextValue : value.ToString().ToLower();
         }
     }

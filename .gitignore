@@ -103,4 +103,4 @@ UpgradeLog*.XML
 .idea/
 .vs/
 
-.DS_Store
+.DS_Storepublish-nuget.ps1
