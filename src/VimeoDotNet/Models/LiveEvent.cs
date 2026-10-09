@@ -497,7 +497,7 @@ namespace VimeoDotNet.Models
         /// <value>The auto CC remaining.</value>
         [PublicAPI]
         [JsonProperty(PropertyName = "auto_cc_remaining")]
-        public long AutoCcRemaining { get; set; }
+        public long? AutoCcRemaining { get; set; }
 
         /// <summary>
         /// Gets or sets the auto CC language.

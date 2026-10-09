@@ -111,7 +111,7 @@ namespace VimeoDotNet
 
                 return uploadRequest;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 throw;
             }

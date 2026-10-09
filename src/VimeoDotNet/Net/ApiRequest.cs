@@ -197,7 +197,7 @@ namespace VimeoDotNet.Net
             catch (Exception e)
             {
                 
-                throw new Exception($"Received error. text was {text}");
+                throw new Exception($"Received error: {e.Message} Text was {text}", e);
             }
         }
 

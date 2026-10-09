@@ -13,7 +13,7 @@
     <Title>Vimeodotnet Tuzes Version</Title>
     <Description>Vimeodotnet Tuzes Version</Description>
     <PackageReleaseNotes>Vimeodotnet Tuzes Version</PackageReleaseNotes>
-    <Version>1.0.30</Version>
+    <Version>1.0.33</Version>
   </PropertyGroup>
   <PropertyGroup Condition="'$(GITHUB_ACTIONS)' == 'true'">
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
@@ -25,7 +25,7 @@
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2025.2.4" />
     <PackageReference Include="Microsoft.NETFramework.ReferenceAssemblies" Version="1.0.3" PrivateAssets="all" />
-    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.SourceLink.GitHub" Version="10.0.401" PrivateAssets="all" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
 </Project>

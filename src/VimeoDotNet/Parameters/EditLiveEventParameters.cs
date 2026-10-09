@@ -124,7 +124,7 @@ namespace VimeoDotNet.Parameters
 
         /// <summary>
         /// The type of stream delay on the viewer side.
-        /// Takes precedence over the legacy <see cref="LowLatency"/> property.
+        /// Takes precedence over the legacy <c>low_latency</c> parameter.
         /// Maps to <c>latency</c>.
         /// </summary>
         [PublicAPI]
